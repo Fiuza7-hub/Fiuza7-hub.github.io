@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Energia Cinética</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+      }
+      label {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+      }
+      input {
+        padding: 1rem;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 2rem;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      #result {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        margin-top: 2rem;
+        text-align: center;
+      }
+      @media (min-width: 768px) {
+        /* layout para telas maiores */
+        h1 {
+          font-size: 3rem;
+        }
+        form {
+          max-width: 50%;
+          margin: 0 auto;
+        }
+        input {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculadora de Energia Cinética</h1>
+    <form>
+      <label for="fps">Velocidade em FPS:</label>
+      <input type="number" id="fps" placeholder="Insira a velocidade em FPS">
+      <label for="grams">Massa em gramas:</label>
+      <input type="number" id="grams" placeholder="Insira a massa em gramas">
+      <div id="result"></div>
+    </form>
+    <script>
+      const fpsInput = document.getElementById("fps");
+      const gramsInput = document.getElementById("grams");
+      const resultDiv = document.getElementById("result");
+
+      function calcular() {
+        const fps = parseFloat(fpsInput.value);
+        const grams = parseFloat(gramsInput.value);
+        const mps = fps * 0.3048;
+        const joules = (grams / 1000) * (mps ** 2) / 2;
+        resultDiv.innerHTML = `Energia cinética: ${joules.toFixed(2)} joules<br>Velocidade: ${mps.toFixed(2)} m/s`;
+      }
+
+      fpsInput.addEventListener("input", calcular);
+      gramsInput.addEventListener("input", calcular);
+    </script>
+  </body>
+</html>
